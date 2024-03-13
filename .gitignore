@@ -1,2 +1,5 @@
 *.pyc
 */__pycache__/*
+django_project/django_project/__pycache__/*.pyc
+django_project/blog/__pycache__/*.pyc
+django_project/blog/__pycache__/admin.cpython-310.pyc
