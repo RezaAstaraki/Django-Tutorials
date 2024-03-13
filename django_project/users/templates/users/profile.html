@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Profile</h1>
+    {% if user %}
+    <img width="150px" height="150px" 
+    class="rounded-circle " 
+    src="{{user.profile.profile_img.url}}"/>
+    {{user}}
+    {% comment %} <img src="media/profile_pictures/portfolio.JPG"/> {% endcomment %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+
+        {{u_form |crispy}}
+        {{p_form |crispy}}
+        <button type="submit">update</button>
+    </form>
+   
+        
+    
+{% endblock %}
+
