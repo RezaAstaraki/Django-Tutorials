@@ -5,9 +5,9 @@
     {% csrf_token %}
     {{form | crispy}}
 
-    <button type="submit">Sing Up</button>
+    <button type="submit">Login</button>
 </form>
-<small><a href="{% url "login" %}">I already have an Account</a></small>
+<small><a href="{% url "register" %}">I don't have an Account Sing Up</a></small>
 
 
 
