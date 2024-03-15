@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, ProfileForm, UserForm
 
 
 # Create your views here.
@@ -23,5 +23,22 @@ def register_view(request):
 
 
 def profile_view(request):
+    u_form = UserForm(request.POST, instance=request.user)
+    p_form = ProfileForm(request.POST, instance=request.user.profile)
 
-    return render(request, 'user/profile.html')
+    print('***************************')
+    print(request.POST)
+    print('**************************')
+
+    if request.method == "POST":
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return redirect('profile')
+    else:
+        u_form = UserForm(instance=request.user)
+        p_form = ProfileForm(instance=request.user.profile)
+
+    context = {'u_form': u_form, 'p_form': p_form}
+
+    return render(request, 'user/profile.html', context=context)
