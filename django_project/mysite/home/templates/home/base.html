@@ -20,8 +20,6 @@
 <body class="container">
 
     <header>
-
-
         <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,12 +33,17 @@
                             <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "about" %}">About</a>
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
                         </li>
                     </ul>
                     
                     {% if user.is_authenticated %}
                         <h3 class="nav-username">{{user}}</h3>
+
+                        <li class="nav-item profile-nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">profile</a>
+                        </li>
+
                         <form action="{% url 'logout' %}"  method="POST" class="d-flex">
                             {% csrf_token %}
                             <button class="btn btn-outline-danger" type="submit">log Out</button>

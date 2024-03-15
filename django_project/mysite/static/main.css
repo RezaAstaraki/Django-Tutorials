@@ -3,3 +3,10 @@
     font-weight: bold;
     margin-right: 2rem;
 }
+
+.profile-nav-item{
+    color: white;
+    list-style: none;
+    margin-right: 3rem;
+    font-weight: bold;
+}
