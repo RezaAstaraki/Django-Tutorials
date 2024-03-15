@@ -44,25 +44,34 @@ def logout_view(request):
 
 @login_required
 def profile_view(request):
-    if request.user:
-        user_update_form = UserForm(instance=request.user)
-        user_profile_update_form = UserProfileForm(
-            instance=request.user.profile)
-    else:
-        user_update_form = UserForm()
-        user_profile_update_form = UserProfileForm()
+
+    user_update_form = UserForm(instance=request.user)
+    user_profile_update_form = UserProfileForm(
+        instance=request.user.profile)
+
     context = {
         'u_form': user_update_form,
         'p_form': user_profile_update_form,
     }
 
     if request.method == "POST":
+        user_update_form = UserForm(request.POST, instance=request.user)
+        user_profile_update_form = UserProfileForm(request.POST, request.FILES,
+                                                   instance=request.user.profile)
+        context = {
+            'u_form': user_update_form,
+            'p_form': user_profile_update_form,
+        }
+        print(user_profile_update_form.is_valid())
+        print(user_update_form.is_valid())
         if user_profile_update_form.is_valid() and user_update_form.is_valid():
+            print('*************************')
             messages.success(request, f"""Your Account Updated Successfully {
                              request.user}""")
             user_profile_update_form.save()
             user_update_form.save()
-            return redirect(reverse('blog-home'))
-            return render(request, 'users/profile.html', context=context)
-
-    return render(request, 'users/profile.html', context=context)
+            return redirect('profile')
+            # return render(request, 'users/profile.html', context=context)
+    else:
+        print('else happend')
+        return render(request, 'users/profile.html', context=context)
