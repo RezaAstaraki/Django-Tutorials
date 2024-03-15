@@ -24,10 +24,11 @@ def register_view(request):
 
 def profile_view(request):
     u_form = UserForm(request.POST, instance=request.user)
-    p_form = ProfileForm(request.POST, instance=request.user.profile)
+    p_form = ProfileForm(request.POST, request.FILES,
+                         instance=request.user.profile)
 
     print('***************************')
-    print(request.POST)
+    print(request.FILES)
     print('**************************')
 
     if request.method == "POST":
