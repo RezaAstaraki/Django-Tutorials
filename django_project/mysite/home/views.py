@@ -11,6 +11,8 @@ from django.views.generic import (
     CreateView,
 
 )
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from user.models import Post
 
 
@@ -37,7 +39,7 @@ class PostListView(ListView):
     # print('****************')
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = "home/new-post.html"
     fields = ['title', 'post_content']
