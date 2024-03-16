@@ -21,10 +21,12 @@ from django.contrib.auth.views import LogoutView, LoginView
 from user.views import register_view, profile_view
 from django.conf.urls.static import static
 from django.conf import settings
+from home.views import PostListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
+    # path('', home_view, name='home'),
+    path('', PostListView.as_view(), name='home'),
     path('register/', register_view, name='register'),
     path('profile/', profile_view, name='profile'),
     path('login/', LoginView.as_view(template_name='user/login.html'), name='login'),
