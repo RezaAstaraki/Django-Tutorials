@@ -24,6 +24,14 @@ class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
     template_name = "home/home.html"
+    ListView.ordering = ['-pk']
+    # print('****************')
+    # print('****************')
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "home/post-detail.html"
 
 
 def about_view(request):

@@ -66,3 +66,10 @@
 .post-content{
     height: 75%;
 }
+
+.title-link{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(3, 145, 145);
+}
