@@ -1,6 +1,7 @@
 from django.forms import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from user.models import Post
 from django.views.generic import (
     ListView,
@@ -47,9 +48,11 @@ class PostCreateView(CreateView):
         print('self.request.user', self.request.user)
         return super().form_valid(form)
 
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     return super().form_valid(form)
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('home')
+    # template_name = ".html"
 
 
 # print(Post._meta.get_fields())

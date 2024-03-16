@@ -15,7 +15,7 @@
                         <small class="post-date">{{post.post_date}}</small>
                         <div class="post-actions">
 
-                            <button class="btn btn-outline-danger">Delete</button>
+                            <a href="{% url 'post-delete' post.id %}" class="btn btn-outline-danger">Delete</a>
                             <a href="#" class="btn btn-outline-info">edit</a>
                         </div>
                     </div>

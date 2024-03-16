@@ -21,7 +21,9 @@ from django.contrib.auth.views import LogoutView, LoginView
 from user.views import register_view, profile_view
 from django.conf.urls.static import static
 from django.conf import settings
-from home.views import PostListView, PostDetailView, PostCreateView
+from home.views import (
+    PostListView, PostDetailView,
+    PostCreateView, PostDeleteView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,6 +37,7 @@ urlpatterns = [
     path('', include('home.urls')),
 
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    path('postDelete/<int:pk>/', PostDeleteView.as_view(), name='post-delete'),
     path('post/new/', PostCreateView.as_view(), name='new-post'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
