@@ -16,7 +16,7 @@
                         <div class="post-actions">
 
                             <a href="{% url 'post-delete' post.id %}" class="btn btn-outline-danger">Delete</a>
-                            <a href="#" class="btn btn-outline-info">edit</a>
+                            <a href="{% url 'post-update' post.id %}" class="btn btn-outline-info">edit</a>
                         </div>
                     </div>
                     <hr/>

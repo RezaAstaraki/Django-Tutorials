@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from home.views import (
     PostListView, PostDetailView,
-    PostCreateView, PostDeleteView)
+    PostCreateView, PostDeleteView,
+    PostUpdateView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +39,7 @@ urlpatterns = [
 
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('postDelete/<int:pk>/', PostDeleteView.as_view(), name='post-delete'),
+    path('postUpdate/<int:pk>/', PostUpdateView.as_view(), name='post-update'),
     path('post/new/', PostCreateView.as_view(), name='new-post'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
