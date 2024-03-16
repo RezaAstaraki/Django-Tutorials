@@ -64,7 +64,13 @@
 
 
     </header>
-
+    {% if messages %}
+    {% for message in messages %}
+    <h3 class="alert alert-{{message.tags}}">{{message}}</h3>
+    
+    {% endfor %}
+    {% endif %}
+    
 
     {% block main_content %}{% endblock main_content %}
 

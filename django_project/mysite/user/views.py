@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm, ProfileForm, UserForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -11,6 +12,8 @@ def register_view(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
+            messages.success(
+                request, f'the user successfully has been added')
             return redirect('login')
         else:
             form = UserRegisterForm(request.POST)
@@ -35,6 +38,8 @@ def profile_view(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
+            messages.success(
+                request, f'the profile has been updated successfully')
             return redirect('profile')
     else:
         u_form = UserForm(instance=request.user)
