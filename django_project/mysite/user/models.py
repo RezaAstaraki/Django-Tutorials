@@ -18,3 +18,21 @@ class Profile(models.Model):
 
     #     img = open(self.image.url)
     #     print(img)
+
+
+class Post(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    post_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+    post_content = models.TextField()
+
+    # class Meta:
+    #     verbose_name = _("")
+    #     verbose_name_plural = _("s")
+
+    def __str__(self):
+        return f'POST : {self.user} : {self.title}'
+
+        # def get_absolute_url(self):
+        #     return reverse("_detail", kwargs={"pk": self.pk})
