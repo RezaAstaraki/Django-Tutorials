@@ -1,8 +1,15 @@
+from django.forms import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render
 from user.models import Post
 from django.views.generic import (
-    ListView, DeleteView,
-    DetailView, UpdateView)
+    ListView,
+    DeleteView,
+    DetailView,
+    UpdateView,
+    CreateView,
+
+)
 from user.models import Post
 
 
@@ -27,6 +34,25 @@ class PostListView(ListView):
     ListView.ordering = ['-pk']
     # print('****************')
     # print('****************')
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = "home/new-post.html"
+    fields = ['title', 'post_content']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        print('****--------------------------')
+        print('self.request.user', self.request.user)
+        return super().form_valid(form)
+
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
+
+
+# print(Post._meta.get_fields())
 
 
 class PostDetailView(DetailView):

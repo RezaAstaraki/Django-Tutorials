@@ -21,7 +21,7 @@ from django.contrib.auth.views import LogoutView, LoginView
 from user.views import register_view, profile_view
 from django.conf.urls.static import static
 from django.conf import settings
-from home.views import PostListView, PostDetailView
+from home.views import PostListView, PostDetailView, PostCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +34,7 @@ urlpatterns = [
          LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     path('', include('home.urls')),
 
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail')
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    path('post/new/', PostCreateView.as_view(), name='new-post'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
