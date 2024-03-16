@@ -13,5 +13,56 @@
 
 .profile-img{
     border-radius: 50%;
+    width: 100px;
+    height: 100px;
     
+}
+.posts-container{
+    display: flex;
+    min-width:300px ;
+    gap: 3rem;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+.post-card{
+    width: 90%;
+    border: solid gray .5px;
+    border-radius: 5px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: start;
+    margin-top: 1.5rem;
+    gap: 3rem;
+    background-color: rgba(226, 226, 226, 0.562);
+}
+.user-info{
+    padding: 2rem;
+    flex: 1;
+}
+.post-info{
+
+    flex-grow: 3;
+}
+.post-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    /* height: 20%; */
+    width: 100%;
+    position: relative;
+}
+.post-actions{
+    padding-top: 5px;
+    right: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+.post-title{
+    /* flex:3; */
+}
+.post-content{
+    height: 75%;
 }

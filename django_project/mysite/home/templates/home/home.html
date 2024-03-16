@@ -1,4 +1,29 @@
 {% extends "home/base.html" %}
 {% block main_content %}
     <h1>home page</h1>
+    <div class="posts-container">
+        {% for post in posts %}
+            <div class="post-card">
+                <div class="user-info">
+
+                    <img class="profile-img" src="{{post.user.profile.image.url}}"/>
+                    <h1 class="post-user">{{post.user}}</h1>
+                </div>
+                <div class="post-info">
+                    <div class="post-row">
+                        <h3 class="post-title">{{post.title}}</h3>
+                        <small class="post-date">{{post.post_date}}</small>
+                        <div class="post-actions">
+
+                            <button class="btn btn-outline-danger">Delete</button>
+                            <a href="#" class="btn btn-outline-info">edit</a>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p class="post-content">{{post.post_content}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+        
 {% endblock main_content %}
