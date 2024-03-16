@@ -1,6 +1,10 @@
+{% extends "home/base.html" %}
+{% block main_content %}
 <form action="" method="post">
     {% csrf_token %} 
     <h3>are you sure you want delete this post?</h3>
     <button class="btn btn-danger" type="submit">yes</button>
-    <button type="submit">cancel</button>
+    <a class="btn btn-outline-secondary" href="{% url 'post-detail' post.id %}">cancel</a>
 </form>
+
+{% endblock main_content %}
