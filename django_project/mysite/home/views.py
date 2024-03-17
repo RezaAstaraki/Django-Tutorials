@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from user.models import Post
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+
+
 from django.views.generic import (
     ListView,
     DeleteView,
@@ -38,6 +42,22 @@ class PostListView(ListView):
     paginate_by = 5
     # print('****************')
     # print('****************')
+
+
+class UserPostListView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = "home/user_posts.html"
+    ListView.ordering = ['-pk']
+    paginate_by = 5
+
+    def get_queryset(self):
+        # print('------------------', self.kwargs.get('username'))
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        # user = self.request.user
+        posts = user.post_set.all().order_by('-post_date')
+
+        return posts
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):

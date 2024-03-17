@@ -1,13 +1,17 @@
 {% extends "home/base.html" %}
 {% block main_content %}
-    <h1>home page</h1>
+    <h1>Posts from {{posts.0.user}}</h1>
     <div class="posts-container">
         {% for post in posts %}
             <div class="post-card">
                 <div class="user-info">
                     <img class="profile-img" src="{{post.user.profile.image.url}}"/>
                     <h1 class="post-user"><a href="{% url 'user-post' post.user.username %}">{{post.user}}</a></h1>
-                    <small>{{post.user.post_set.count}} posts</small>
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <div class="post-info">
                     <div class="post-row">
