@@ -68,8 +68,8 @@
 
 
     </header>
-    <div style="border: 1px solid brown;">
-        <!-- Access GET parameters -->
+    <!-- <div style="border: 1px solid brown;">
+    
         <p>GET_REQUEST parameters:</p>
         <ul>
             {% for key, value in request.GET.items %}
@@ -83,11 +83,14 @@
             {% endfor %}
         </ul>
     
-        <!-- Print the entire request object for debugging -->
         <pre>{{ context }}</pre>
         <pre>{{ object_list }}</pre>
         <pre>{{ page_obj }}</pre>
-    </div>
+        <pre>{{ page_obj.next }}</pre>
+        <pre>{{ paginator }}</pre>
+        <pre>{{ paginator.num_pages }}</pre>
+
+    </div> -->
     
 
     {% if messages %}
