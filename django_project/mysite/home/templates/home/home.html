@@ -14,9 +14,11 @@
                         <h3 class="post-title"><a class="title-link" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h3>
                         <small class="post-date">{{post.post_date}}</small>
                         <div class="post-actions">
-
-                            <a href="{% url 'post-delete' post.id %}" class="btn btn-outline-danger">Delete</a>
-                            <a href="{% url 'post-update' post.id %}" class="btn btn-outline-info">edit</a>
+                            {% if post.user == request.user %}
+                                <a href="{% url 'post-delete' post.id %}" class="btn btn-outline-danger">Delete</a>
+                                <a href="{% url 'post-update' post.id %}" class="btn btn-outline-info">edit</a>
+        
+                            {% endif %}
                         </div>
                     </div>
                     <hr/>
