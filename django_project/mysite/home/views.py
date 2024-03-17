@@ -35,6 +35,7 @@ class PostListView(ListView):
     context_object_name = 'posts'
     template_name = "home/home.html"
     ListView.ordering = ['-pk']
+    paginate_by = 5
     # print('****************')
     # print('****************')
 
